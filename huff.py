@@ -187,7 +187,7 @@ def compress(input_filename, output_filename):
         temp = char_freq[x]
         # The frequency is type of int, divided into four bytes and written to the compressed file
         b_str = bin(temp).replace('0b', '')
-        while len(b_str) != 32:
+        while len(b_str) < 32:
             b_str = '0' + b_str
 
         while len(b_str) > 0:
@@ -222,7 +222,7 @@ def compress(input_filename, output_filename):
     # Write the last code length
     output.write(six.int2byte(len(code)))
 
-    while len(code) != 8:
+    while len(code) < 8:
         code = code + '0'
 
     out = int(code, 2)
